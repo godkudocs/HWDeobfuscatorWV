@@ -1,0 +1,26 @@
+@TeamCEO ➜ /workspaces/HWDeobfuscatorWV (master) $ python HWDeobfuscatorWV.py
+Using XBDM interface
+Using default host 'localhost'
+Using default port 731
+Connecting to 'localhost' (Port 731)
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
+^[Retrying now
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
+Retrying now
+Connection refused. Retrying in 500 ms
