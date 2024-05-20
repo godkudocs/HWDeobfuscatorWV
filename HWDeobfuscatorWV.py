@@ -1,4 +1,4 @@
-import sys
+import time
 import Helper
 import Scanner
 import GraphHelper
@@ -22,9 +22,23 @@ Helper.file_delete(result_binary_name)
 config = Helper.load_config()
 
 # Connect to Xbox One
-console_ip = config["console_ip"]
-xbox = xboxpy.XboxOne(console_ip)
-Helper.assert_true(xbox is not None, "Could not connect to Xbox One", "Connected to Xbox One at " + console_ip)
+console_ip = config.get("console_ip", "localhost")
+xbox = None
+retry_interval = 0.5  # 500 ms
+max_retries = 10
+for attempt in range(max_retries):
+    try:
+        xbox = xboxpy.XboxOne(console_ip)
+        if xbox.connect():
+            break
+    except ConnectionRefusedError:
+        print(f"Connection refused. Retrying in {retry_interval * 1000} ms")
+        time.sleep(retry_interval)
+else:
+    Helper.assert_true(False, "Could not connect to Xbox One", f"Failed to connect to Xbox One at {console_ip} after {max_retries} attempts")
+
+# Continue if connected
+Helper.assert_true(xbox is not None, "Could not connect to Xbox One", f"Connected to Xbox One at {console_ip}")
 
 # Retrieve the process ID for Happy Wars
 pid = xbox.get_process_id("Happy Wars")
